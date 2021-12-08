@@ -1,0 +1,11 @@
+cmake_minimum_required(VERSION 3.0.0)
+
+
+
+project(loadlibrary)
+# add_library()
+enable_testing()
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "../../bin")
+
+add_subdirectory(src)
+add_subdirectory(lib)

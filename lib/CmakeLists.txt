@@ -1,0 +1,7 @@
+
+# 设置exe 源代码变量
+
+
+add_library(curldll SHARED dllmain.cc)
+target_compile_definitions(curldll PRIVATE EXPORT)
+target_include_directories(curldll PRIVATE ../include)
