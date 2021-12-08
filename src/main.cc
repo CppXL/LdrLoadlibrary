@@ -68,7 +68,10 @@ int main() {
 */
 
 bool LdrLoadLibrary(const wchar_t dll_path) {
-    // 读取文件
-    IMAGE_FIRST_SECTION()
+    /**
+     * 读取文件
+     * 
+    */
+    // IMAGE_FIRST_SECTION()
     return true;
 }
