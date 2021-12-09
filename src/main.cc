@@ -5,14 +5,17 @@
 #include "func_point.h"
 #include "PE.h"
 
-int main() {
+int main()
+{
     int option;
     std::cout << "1.system loadlibray\t2.self loadlibrary" << std::endl
               << ">>";
     std::cin >> option;
     HINSTANCE hModDll = NULL;
-    switch (option) {
-    case 1: {
+    switch (option)
+    {
+    case 1:
+    {
         /*HINSTANCE 和 HMODULE 是一个东西 在win32下*/
 #if defined(CXX_COMPILER_MSVC)
         hModDll = LoadLibraryA("curldll");
@@ -26,12 +29,14 @@ int main() {
         std::cout << "没有定义编译器" << std::endl;
         return -1;
 #endif
-        if (!hModDll) {
+        if (!hModDll)
+        {
             std::cout << __LINE__ << ":error code " << GetLastError() << std::endl;
             return -1;
         }
         pfnCurl pCurl = (pfnCurl)GetProcAddress(hModDll, "curl");
-        if (!pCurl) {
+        if (!pCurl)
+        {
             std::cout << __LINE__ << ":error code " << GetLastError() << std::endl;
             return -1;
         }
@@ -39,7 +44,8 @@ int main() {
         FreeLibrary(hModDll);
         break;
     }
-    case 2: {
+    case 2:
+    {
         bool LdrResult;
 #if defined(CXX_COMPILER_MSVC)
         LdrLoadLibrary(L"curldll");
@@ -67,7 +73,8 @@ int main() {
  * 
 */
 
-bool LdrLoadLibrary(const wchar_t dll_path) {
+bool LdrLoadLibrary(const wchar_t *dll_path)
+{
     /**
      * 读取文件
      * 

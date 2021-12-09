@@ -12,9 +12,11 @@
 #endif
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
-_FUNC_ void curl(int);
+    _FUNC_ void curl(int);
+    _FUNC_ void test();
 #ifdef __cplusplus
 }
 #endif

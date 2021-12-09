@@ -1,4 +1,5 @@
-class PE {
+class PE
+{
 private:
     /* data */
 public:
@@ -6,10 +7,12 @@ public:
     ~PE();
 };
 
-PE::PE(/* args */) {
+PE::PE(/* args */)
+{
 }
 
-PE::~PE() {
+PE::~PE()
+{
 }
 
-bool LdrLoadLibrary(const wchar_t dll_path);
+bool LdrLoadLibrary(const wchar_t *dll_path);
