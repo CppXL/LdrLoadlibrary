@@ -1,7 +1,7 @@
 # loadlibrary LdrLoadLibrary程序
 # helloworld 白程序
 add_executable(static_load_dll static_load_dll.cc)
-add_executable(loadlibrary main.cc)
+add_executable(loadlibrary loadlibrary.cc)
 add_executable(helloworld helloworld.cc)
 
 target_compile_definitions(static_load_dll PRIVATE IMPORT)
@@ -10,7 +10,7 @@ target_link_libraries(static_load_dll curldll)
 target_include_directories(loadlibrary PRIVATE ../include)
 
 
-add_test(main main.cc)
+add_test(loadlibrary loadlibrary.cc)
 
 # 定义宏，调用loadlibrary的时候不会出错
 if(CMAKE_CXX_COMPILER MATCHES "MSVC")
